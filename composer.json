@@ -1,0 +1,6 @@
+{
+    "name": "cjam/FastCodeCi",
+    "description": "CLI tools for CodeIgniter 4",
+    "type": "codeigniter-command"
+    
+}
