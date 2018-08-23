@@ -1,5 +1,5 @@
 {
-    "name": "cjam/FastCodeCi",
+    "name": "cjam/fastcode-ci",
     "description": "CLI tools for CodeIgniter 4",
     "type": "codeigniter-command"
     
