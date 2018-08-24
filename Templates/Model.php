@@ -7,6 +7,7 @@ class {! nameModel !} extends Model
     protected $table      = '{! table !}';
     protected $primaryKey = '{! primaryKey !}';
     protected $allowedFields = [{! allowedFields !}];
-    protected $returnType    = 'App\Entities\{! nameEntity !}';
+    protected $returnType    = '{! returnType !}';
+
 
 }

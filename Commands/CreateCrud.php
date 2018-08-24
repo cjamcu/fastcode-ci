@@ -60,6 +60,7 @@ class CreateCrud extends BaseCommand
                 'fieldsTd'          => $this->getDatesFromFields($fields_db)['fieldsTd'],
                 'inputForm'         => $this->getDatesFromFields($fields_db)['inputForm'],
                 'valueInput'        => $this->getDatesFromFields($fields_db)['valueInput'],
+                'returnType'        => "App\Entities\\".ucfirst($table),
 
 
             ];
