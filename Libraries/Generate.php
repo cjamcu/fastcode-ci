@@ -91,7 +91,7 @@ trait Generate
 
         if (! write_file($path, $contents))
         {
-            throw new \RuntimeException(sprintf(lang('Vulcan.errorWritingFile'), $path));
+            throw new \RuntimeException(sprintf(lang('FastCode.errorWritingFile'), $path));
         }
 
     }
@@ -257,6 +257,22 @@ trait Generate
 
 
         file_put_contents(APPPATH.'Config/Routes.php', $data_to_write);
+    }
+
+    public function createDirectory($path, $perms = 0755)
+    {
+
+        if (is_dir($path))
+        {
+            return $this;
+        }
+
+        if (! mkdir($path, $perms, true))
+        {
+            throw new \RuntimeException(sprintf(lang('FastCode.errorCreatingDir'), $path));
+        }
+
+        return $this;
     }
 
 
