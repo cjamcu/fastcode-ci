@@ -30,19 +30,31 @@ class CreateMigration extends BaseCommand
         {
             $nameMigration = CLI::prompt('Migration name');
         }
-        $namespace = "App";
 
-            $data = [
+        if (empty($namespace))
+        {
+            $namespace = CLI::prompt('Namespace');
+        }
+
+        if (empty($namespace) || $namespace==""){
+            $namespace = "App";
+        }
+
+
+        $data = [
                 'nameMigration'     => $nameMigration,
                 'namespace'         => $namespace,
 
-            ];
+        ];
 
-            $content = $this->render('Migration',$data);
-            $path    = $this->getPathOutput('Database/Migrations').$data['nameMigration'].'.php';
-            $this->copyFile($path,$content);
+        $content = $this->render('Migration',$data);
+        $path    = $this->getPathOutput('Database/Migrations',$namespace);
+        if (!is_dir($path)){
+            $this->createDirectory($path);
+        }
+        $this->copyFile($path.$data['nameMigration'].'.php',$content);
 
-            echo "File created :" . $path;
+        echo "File created :" . $path.$data['nameMigration'].'.php';
 
 
     }

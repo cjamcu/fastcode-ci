@@ -1,8 +1,8 @@
-@php namespace {! space !}\Controllers;
+@php namespace {! namespace !}\Controllers;
 
 use CodeIgniter\Controller;
 
-class {! name !} extends Controller
+class {! nameController !} extends Controller
 {
     public function index()
     {

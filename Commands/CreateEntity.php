@@ -29,7 +29,15 @@ class CreateEntity extends BaseCommand
             $table = CLI::prompt('Table name');
         }
 
-        $namespace = "App";
+        if (empty($namespace))
+        {
+            $namespace = CLI::prompt('Namespace');
+        }
+
+        if (empty($namespace) || $namespace==""){
+            $namespace = "App";
+        }
+
 
         if ($fields_db =  $this->getFields($table)){
             $data = [
@@ -41,10 +49,13 @@ class CreateEntity extends BaseCommand
             ];
 
             $content = $this->render('Entity',$data);
-            $path    = $this->getPathOutput('Entities').$data['nameEntity'].'.php';
-            $this->copyFile($path,$content);
+            $path    = $this->getPathOutput('Entities',$namespace);
+            if (!is_dir($path)){
+                $this->createDirectory($path);
+            }
+            $this->copyFile($path.$data['nameEntity'].'.php',$content);
 
-            echo "File created :" . $path;
+            echo "File created :" . $path.$data['nameEntity'].'.php';
 
 
         }else{

@@ -30,16 +30,29 @@ class CreateController extends BaseCommand
             $name = CLI::prompt('Controller Name');
         }
 
+
+        if (empty($namespace))
+        {
+            $namespace = CLI::prompt('Namespace');
+        }
+
+        if (empty($namespace) || $namespace==""){
+            $namespace = "App";
+        }
+
         $data = [
-            'name'      =>  ucfirst($name),
-            'space' =>  'App',
+            'nameController'    =>  ucfirst($name),
+            'namespace'         =>  $namespace,
         ];
 
         $content = $this->render('SimpleController',$data);
-        $path    = $this->getPathOutput('Controllers').$data['name'].'.php';
-        $this->copyFile($path,$content);
+        $path    = $this->getPathOutput('Controllers',$data['namespace']);
+        if (!is_dir($path)){
+            $this->createDirectory($path);
+        }
+        $this->copyFile($path.$data['nameController'].'.php',$content);
 
-        echo "File created :" . $path;
+        echo "File created :" . $path.$data['nameController'].'.php';
 
 
     }

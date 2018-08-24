@@ -34,7 +34,16 @@ class CreateModel extends BaseCommand
         {
             $modelName = CLI::prompt('Model name');
         }
-        $namespace = "App";
+
+        if (empty($namespace))
+        {
+            $namespace = CLI::prompt('Namespace');
+        }
+
+        if (empty($namespace) || $namespace==""){
+            $namespace = "App";
+        }
+
 
         if ($fields_db =  $this->getFields($table)){
             $data = [
@@ -47,10 +56,13 @@ class CreateModel extends BaseCommand
             ];
 
             $content = $this->render('Model',$data);
-            $path    = $this->getPathOutput('Models').$data['nameModel'].'.php';
-            $this->copyFile($path,$content);
+            $path    = $this->getPathOutput('Models',$namespace);
+            if (!is_dir($path)){
+                $this->createDirectory($path);
+            }
+            $this->copyFile($path.$data['nameModel'].'.php',$content);
 
-            echo "File created :" . $path;
+            echo "File created :" . $path.$data['nameModel'].'.php';
 
 
         }else{
