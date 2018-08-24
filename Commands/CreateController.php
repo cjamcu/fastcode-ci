@@ -18,7 +18,6 @@ class CreateController extends BaseCommand
     protected $group = 'FastCodeCI';
     protected $name = 'create:controller';
     protected $description = 'Create a  Controller file';
-    protected $data = [];
 
 
 
@@ -37,7 +36,7 @@ class CreateController extends BaseCommand
         ];
 
         $content = $this->render('SimpleController',$data);
-        $path = $this->getPathOutput('Controllers').$data['name'].'.php';
+        $path    = $this->getPathOutput('Controllers').$data['name'].'.php';
         $this->copyFile($path,$content);
 
         echo "File created :" . $path;

@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: cjam
  * Date: 8/23/2018
- * Time: 7:23 p.m.
+ * Time: 8:16 p.m.
  */
 
 namespace FastCode\Commands;
@@ -12,42 +12,36 @@ use CodeIgniter\CLI\CLI;
 use CodeIgniter\CLI\BaseCommand;
 use FastCode\Libraries\Generate;
 
-class CreateModel extends BaseCommand
+class CreateEntity extends BaseCommand
 {
     use Generate;
     protected $group = 'FastCodeCI';
-    protected $name = 'create:model';
-    protected $description = 'Create a  Model file';
-
+    protected $name = 'create:entity';
+    protected $description = 'Create a  Entity file';
 
     public function run(array $params)
     {
         $table = array_shift($params);
-        $modelName = array_shift($params);
+
 
         if (empty($table))
         {
             $table = CLI::prompt('Table name');
         }
 
-        if (empty($modelName))
-        {
-            $modelName = CLI::prompt('Model name');
-        }
         $namespace = "App";
 
         if ($fields_db =  $this->getFields($table)){
             $data = [
-                'nameModel'         => ucfirst($modelName),
                 'table'             => $table,
-                'primaryKey'        => $this->getPrimaryKey($fields_db),
+                'nameEntity'        => ucfirst($table),
                 'namespace'         => $namespace,
-                'allowedFields'     =>  $this->getDatesFromFields($fields_db)['allowedFields'],
-                'returnType'        => 'array'
+                'propertyList'      => $this->getDatesFromFields($fields_db)['propertyList'],
+
             ];
 
-            $content = $this->render('Model',$data);
-            $path    = $this->getPathOutput('Models').$data['nameModel'].'.php';
+            $content = $this->render('Entity',$data);
+            $path    = $this->getPathOutput('Entities').$data['nameEntity'].'.php';
             $this->copyFile($path,$content);
 
             echo "File created :" . $path;
