@@ -1,6 +1,7 @@
 {
     "name": "cjam/fastcode-ci",
     "description": "CLI tools for CodeIgniter 4",
+    "license": "MIT",
     "type": "codeigniter-command"
     
 }

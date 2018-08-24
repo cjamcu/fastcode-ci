@@ -30,7 +30,7 @@ Everything is ready to start generating repetitive code with FastCodeCi
 
 ### Commands
 
- Commands       |      Functionality      |  Params |
+ Commands       |      Functionality      |  Parameters |
 |------------------|:-------------:|:------:|
 | ```php spark create:crud``` |  Create CRUD from table   | Table,Model name , Controller name  |
 | ```php spark create:controller``` |    Create a  Controller file   |   Controller name |
