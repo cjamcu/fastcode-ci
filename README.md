@@ -39,5 +39,5 @@ Everything is ready to start generating repetitive code with FastCodeCi
 | ```php spark create:command```| Create a  Command file| Command Name, Group , Description |
 | ```php spark create:migration```| Create a  Migration file| Migration Name |
 
-** In all operations you need the Namespace parameter, if you leave it blank it is assumed that you are using `App` **
+**In all operations you need the Namespace parameter, if you leave it blank it is assumed that you are using `App`**
 
