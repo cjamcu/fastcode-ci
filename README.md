@@ -5,11 +5,11 @@
 
  - [x] Create  CRUD of a table
  - [ ] Create Panel Admin
- - [ ] Create a Controller file
- - [ ] Create a Model file
- - [ ] Create a Entity file
- - [ ] Create a Migration file
- - [ ] Create a Command file.
+ - [x] Create a Controller file
+ - [x] Create a Model file
+ - [x] Create a Entity file
+ - [x] Create a Migration file
+ - [x] Create a Command file.
 
 
 ## Installation
@@ -27,9 +27,3 @@ public $psr4 = [
 
 ## Start using it
 Everything is ready to start generating repetitive code with FastCodeCi
-#### Command to create CRUD
-```
-php spark create:crud
-```
-**This command prompted to enter the name of the table, the model  and controller.**
-
