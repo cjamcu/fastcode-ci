@@ -25,5 +25,19 @@ public $psr4 = [
 ];
 ```
 
-## Start using it
-Everything is ready to start generating repetitive code with FastCodeCi
+## Start using it  
+Everything is ready to start generating repetitive code with FastCodeCi  
+
+### Commands
+
+ Commands       |      Functionality      |  Params |
+|------------------|:-------------:|:------:|
+| ```php spark create:crud``` |  Create CRUD from table   | Table,Model name , Controller name  |
+| ```php spark create:controller``` |    Create a  Controller file   |   Controller name |
+| ```php spark create:model```| Create a  Model file|    Table , Model Name |
+| ```php spark create:entity```| Create a  Entity file| Table |
+| ```php spark create:command```| Create a  Command file| Command Name, Group , Description |
+| ```php spark create:migration```| Create a  Migration file| Migration Name |
+
+** In all operations you need the Namespace parameter, if you leave it blank it is assumed that you are using `App` **
+
