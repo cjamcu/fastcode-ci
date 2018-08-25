@@ -25,14 +25,14 @@ class CreateModel extends BaseCommand
         $table = array_shift($params);
         $modelName = array_shift($params);
 
-        if (empty($table))
-        {
-            $table = CLI::prompt('Table name');
-        }
-
         if (empty($modelName))
         {
             $modelName = CLI::prompt('Model name');
+        }
+
+        if (empty($table))
+        {
+            $table = CLI::prompt('Table name');
         }
 
         if (empty($namespace))
