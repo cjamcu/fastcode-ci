@@ -20,7 +20,7 @@
  
  3- open up `/application/Config/Autoload.php` and create the `FastCode` namespace in the `$psr4` array:
 ```
-public $psr4 = [
+$psr4 = [
 	'FastCode'   	=> ROOTPATH.'vendor/cjam/fastcode-ci',
 ];
 ```
