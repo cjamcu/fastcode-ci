@@ -69,8 +69,8 @@ class CreateCrud extends BaseCommand
 
             echo "Done!";
 
-
-
+        }else{
+            echo "Table no found";
         }
 
 
