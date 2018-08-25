@@ -48,11 +48,9 @@ class CreateMigration extends BaseCommand
         ];
 
         $content = $this->render('Migration',$data);
-        $path    = $this->getPathOutput('Database/Migrations',$namespace);
-        if (!is_dir($path)){
-            $this->createDirectory($path);
-        }
-        $this->copyFile($path.$data['nameMigration'].'.php',$content);
+        $path    = $this->getPathOutput('Database/Migrations',$namespace).$data['nameMigration'].'.php';
+
+        $this->copyFile($path,$content);
 
         echo "File created :" . $path.$data['nameMigration'].'.php';
 

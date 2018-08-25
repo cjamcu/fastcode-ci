@@ -22,7 +22,7 @@ class CreateCrud extends BaseCommand
     	$modelName = array_shift($params);
 
 
-    	$namespace = "App";
+    	$namespace = array_shift($params);
 
         if (empty($table))
         {
@@ -41,6 +41,15 @@ class CreateCrud extends BaseCommand
 
         if ($modelName==$controllerName){
             $modelName = CLI::prompt('Please enter other name for Model');
+        }
+
+        if (empty($namespace))
+        {
+            $namespace = CLI::prompt('Namespace');
+        }
+
+        if (empty($namespace) || $namespace==""){
+            $namespace = "App";
         }
 
 

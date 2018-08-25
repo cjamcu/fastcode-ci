@@ -60,13 +60,11 @@ class CreateCommand extends BaseCommand
 
 
         $content = $this->render('Command',$data);
-        $path    = $this->getPathOutput('Commands',$data['namespace']);
-        if (!is_dir($path)){
-            $this->createDirectory($path);
-        }
-        $this->copyFile($path. $data['CommandName'].'.php',$content);
+        $path    = $this->getPathOutput('Commands',$data['namespace']).$data['CommandName'].'.php';
 
-        echo "File created :" .$path.$data['CommandName'].'.php';
+        $this->copyFile($path,$content);
+
+        echo "File created :" .$path;
 
 
 

@@ -46,13 +46,11 @@ class CreateController extends BaseCommand
         ];
 
         $content = $this->render('SimpleController',$data);
-        $path    = $this->getPathOutput('Controllers',$data['namespace']);
-        if (!is_dir($path)){
-            $this->createDirectory($path);
-        }
-        $this->copyFile($path.$data['nameController'].'.php',$content);
+        $path    = $this->getPathOutput('Controllers',$data['namespace']).$data['nameController'].'.php';
 
-        echo "File created :" . $path.$data['nameController'].'.php';
+        $this->copyFile($path,$content);
+
+        echo "File created :" . $path;
 
 
     }

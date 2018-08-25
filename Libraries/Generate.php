@@ -89,6 +89,12 @@ trait Generate
     protected function copyFile($path, $contents = null){
         helper('filesystem');
 
+        $folder = $this->getDirOfFile($path);
+        if (! is_dir($folder))
+        {
+            $this->createDirectory($folder);
+        }
+
         if (! write_file($path, $contents))
         {
             throw new \RuntimeException(sprintf(lang('FastCode.errorWritingFile'), $path));
@@ -203,10 +209,10 @@ trait Generate
      */
     protected function createFileCrud($data){
 
-        $pathEntity         = $this->getPathOutput('Entities').$data['nameEntity'].'.php';
-        $pathModel          = $this->getPathOutput('Models').$data['nameModel'].'.php';
-        $pathController     = $this->getPathOutput('Controllers').$data['nameController'].'.php';
-        $pathView           = $this->getPathOutput('Views').$data['table'].'.php';
+        $pathEntity         = $this->getPathOutput('Entities',$data['namespace']).$data['nameEntity'].'.php';
+        $pathModel          = $this->getPathOutput('Models',$data['namespace']).$data['nameModel'].'.php';
+        $pathController     = $this->getPathOutput('Controllers',$data['namespace']).$data['nameController'].'.php';
+        $pathView           = $this->getPathOutput('Views',$data['namespace']).$data['table'].'.php';
 
         $this->copyFile($pathEntity,$this->render('Entity',$data));
         $this->copyFile($pathModel,$this->render('Model',$data));
@@ -273,6 +279,12 @@ trait Generate
         }
 
         return $this;
+    }
+
+    public function getDirOfFile($file){
+        $segments = explode('/', $file);
+        array_pop($segments);
+        return $folder = implode('/', $segments);
     }
 
 

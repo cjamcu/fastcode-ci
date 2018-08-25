@@ -49,13 +49,11 @@ class CreateEntity extends BaseCommand
             ];
 
             $content = $this->render('Entity',$data);
-            $path    = $this->getPathOutput('Entities',$namespace);
-            if (!is_dir($path)){
-                $this->createDirectory($path);
-            }
-            $this->copyFile($path.$data['nameEntity'].'.php',$content);
+            $path    = $this->getPathOutput('Entities',$namespace).$data['nameEntity'].'.php';
 
-            echo "File created :" . $path.$data['nameEntity'].'.php';
+            $this->copyFile($path,$content);
+
+            echo "File created :" . $path;
 
 
         }else{

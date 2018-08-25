@@ -56,13 +56,11 @@ class CreateModel extends BaseCommand
             ];
 
             $content = $this->render('Model',$data);
-            $path    = $this->getPathOutput('Models',$namespace);
-            if (!is_dir($path)){
-                $this->createDirectory($path);
-            }
-            $this->copyFile($path.$data['nameModel'].'.php',$content);
+            $path    = $this->getPathOutput('Models',$namespace).$data['nameModel'].'.php';
 
-            echo "File created :" . $path.$data['nameModel'].'.php';
+            $this->copyFile($path,$content);
+
+            echo "File created :" . $path;
 
 
         }else{
